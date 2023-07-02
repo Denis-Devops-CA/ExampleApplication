@@ -41,15 +41,6 @@ jobs:
       - run:
           name: test-run
           command: npm run test
-      - run:
-          name: docker-login
-          command: docker login -t $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run:
-          name: Build Docker Image
-          command: docker build -t $IMAGE_NAME:latest .
-      - run: 
-          name: Publish Docker Image
-          command: docker push $IMAGE_NAME
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
